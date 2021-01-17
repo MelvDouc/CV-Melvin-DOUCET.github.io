@@ -225,48 +225,5 @@
     </section>
 </main>
 
-<script>
-$(document).ready(function(){
-    $('.inactive').nextUntil(this).css('display', 'none');
-    $('h2, .comp h3').on('click', function() {
-        $(this).toggleClass('inactive');
-        $(this).nextUntil(this).fadeToggle(500, 'linear');
-    });
-});
-
-let i;
-const photo = document.getElementById('photo').getElementsByTagName('img')[0];
-const grandePhoto = document.getElementById('gd-photo');
-const h2 = document.getElementsByTagName('h2');
-const formation = document.querySelectorAll('#formation > ul.deux-col > li');
-const experience = document.querySelectorAll('#experience > ul > li');
-
-photo.addEventListener('mouseover', function() {
-    this.style.display = 'none';
-    grandePhoto.style.display = 'block';
-});
-grandePhoto.addEventListener('mouseout', function() {
-    photo.style.display = 'block';
-    this.style.display = 'none';
-});
-
-let ajouterClasses = (elements, ...classesBootstrap) => {
-    for(element of elements) {
-        element.classList.add(...classesBootstrap)
-    }
-};
-
-ajouterClasses(h2, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
-ajouterClasses(formation, 'mb-3');
-ajouterClasses(experience, 'mb-3');
-
-for(titreH2 of h2) {
-    titreH2.addEventListener('mouseover', function() {
-        if(this.classList.contains('inactive')) {
-        this.setAttribute('title', 'Cliquez pour dérouler.')
-        } else {this.setAttribute('title', 'Cliquez pour replier.')}
-    })
-};
-</script>
 </body>
 </html>
