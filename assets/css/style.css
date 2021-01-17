@@ -1,6 +1,10 @@
-@media print {section {break-inside: avoid-page;}}
+@media print {
+	section {break-inside: avoid-page;}
+}
 
-mark {background-color: #ffff68;}
+mark {
+	background-color: #ffff68;
+}
 
 em {
 	font-style: normal;
@@ -28,37 +32,56 @@ h2::after {
 	bottom: 0.5rem;
 }
 
-.comp h3::after {content: ' -';}
+.comp h3::after {
+	content: ' -';
+}
 
-.inactive::after, .comp h3.inactive::after {content: ' +';}
+.inactive::after, .comp h3.inactive::after {
+	content: ' +';
+}
 
 h2, .comp h3 {cursor: pointer;}
 
 /*  */
 
-ul {list-style-type: "\2B9A";}
+ul {
+	list-style-type: "\2B9A";
+}
 
 li > ul {
 	list-style-type: "\1F8A7";
 	font-size: 0.9em;
 }
 
-li {padding-left: 0.33em;}
+li {
+	padding-left: 0.33em;
+}
 
-#benevolat li {break-inside: avoid-column;}
+#benevolat li {
+	break-inside: avoid-column;
+}
 
 /*  */
 
-.deux-col {column-count: 2;}
+.deux-col {
+	column-count: 2;
+}
 
 #gd-photo {display: none;}
 
-#gd-photo img {z-index: 1;}
+#gd-photo img {
+	z-index: 1;
+}
 
-header > div:nth-child(2) {width: fit-content;}
+header > div:nth-child(2) {
+	width: fit-content;
+}
 
 header > div:nth-child(2) a {
 	cursor: text;
 	color: #000;
 }
-header > div:nth-child(2) a:hover {color: blue;}
+
+header > div:nth-child(2) a:hover {
+	color: blue;
+}
