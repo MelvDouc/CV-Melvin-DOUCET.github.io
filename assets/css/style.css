@@ -36,11 +36,13 @@ h2::after {
 	content: ' -';
 }
 
-.inactive::after, .comp h3.inactive::after {
+.titre-inactif::after, .comp h3.titre-inactif::after {
 	content: ' +';
 }
 
-h2, .comp h3 {cursor: pointer;}
+h2, .comp h3 {
+	cursor: pointer;
+}
 
 /*  */
 
@@ -84,4 +86,27 @@ header > div:nth-child(2) a {
 
 header > div:nth-child(2) a:hover {
 	color: blue;
+}
+
+/* Animation des titres */
+
+.fade-in {
+    animation: fadeIn 500ms linear forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity:0}
+    to {opacity:1}
+}
+
+.fade-out {
+    animation: fadeOut 500ms linear forwards;
+}
+
+@keyframes fadeOut {
+    100% {opacity:0}
+}
+
+.section-inactive {
+    display: none;
 }
