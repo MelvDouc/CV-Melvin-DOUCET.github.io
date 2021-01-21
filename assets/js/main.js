@@ -2,6 +2,7 @@ let i;
 const photo = document.getElementById('photo').getElementsByTagName('img')[0];
 const grandePhoto = document.getElementById('gd-photo');
 const h2s = document.getElementsByTagName('h2');
+const h3sCompetences = document.querySelectorAll('.competence h3');
 const formation = document.querySelectorAll('#formation > ul.deux-col > li');
 const experience = document.querySelectorAll('#experience > ul > li');
 
@@ -59,4 +60,30 @@ for(h2 of h2s){
         this.setAttribute('title', 'Cliquez pour dérouler.')
         } else {this.setAttribute('title', 'Cliquez pour replier.')}
     })
-}
+};
+
+for(h3 of h3sCompetences){
+    if(h3.classList.contains('titre-inactif')){
+        for(child of h3.parentElement.children){
+            if(!child.matches('h3')){
+                toggleClass(child, 'section-inactive');
+            }
+        }
+    };
+    h3.addEventListener('click', function() {
+        toggleClass(this, 'titre-inactif');
+        for(child of this.parentElement.children){
+            if(!child.matches('h3')){
+                if(window.getComputedStyle(child).getPropertyValue('display') != 'none'){
+                    child.classList.add('fade-out');
+                    child.classList.remove('fade-in');
+                    setTimeout(toggleClass, 500, child, 'section-inactive');
+                } else{
+                    toggleClass(child, 'section-inactive');
+                    child.classList.remove('fade-out');
+                    child.classList.add('fade-in');
+                }
+            }
+        }
+    });
+};

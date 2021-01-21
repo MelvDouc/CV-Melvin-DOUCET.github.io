@@ -32,15 +32,15 @@ h2::after {
 	bottom: 0.5rem;
 }
 
-.comp h3::after {
+.competence h3::after {
 	content: ' -';
 }
 
-.titre-inactif::after, .comp h3.titre-inactif::after {
+.titre-inactif::after, .competence h3.titre-inactif::after {
 	content: ' +';
 }
 
-h2, .comp h3 {
+h2, .competence h3 {
 	cursor: pointer;
 }
 
