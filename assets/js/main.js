@@ -15,15 +15,15 @@ grandePhoto.addEventListener('mouseout', function() {
     this.style.display = 'none';
 });
 
-let ajouterClasse = (element, ...classesBootstrap) => {
+let ajouterClasses = (element, ...classesBootstrap) => {
     for(i = 0; i < element.length; i++) {
         element[i].classList.add(...classesBootstrap);
     }
 }
 
-ajouterClasse(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
-ajouterClasse(formation, 'mb-3');
-ajouterClasse(experience, 'mb-3');
+ajouterClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
+ajouterClasses(formation, 'mb-3');
+ajouterClasses(experience, 'mb-3');
 
 //
 
@@ -40,7 +40,7 @@ for(h2 of h2s){
         }
     };
     h2.addEventListener('click', function() {
-        toggleClass(h2, 'titre-inactif');
+        toggleClass(this, 'titre-inactif');
         for(child of this.parentElement.children){
             if(!child.matches('h2')){
                 if(window.getComputedStyle(child).getPropertyValue('display') != 'none'){
