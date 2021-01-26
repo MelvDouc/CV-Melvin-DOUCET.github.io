@@ -1,8 +1,8 @@
 // [0] Variables et fonctions
 
 let i;
-const photo = document.querySelector('#photo').getElementsByTagName('img')[0];
-const grandePhoto = document.querySelector('#gd-photo');
+const petitePhoto = document.querySelector('#petite-photo > img');
+const grandePhoto = document.querySelector('#grande-photo');
 const h2s = document.getElementsByTagName('h2');
 const h3sCompetences = document.querySelectorAll('.competence h3');
 const formation = document.querySelectorAll('#formation > ul.deux-col > li');
@@ -16,10 +16,6 @@ function ajouterClasses(elements, ...classesBootstrap) {
 
 let toggleClass = (element, class1) => element.classList.toggle(class1);
 
-// function toggleClass(element, class1) {
-//     element.classList.toggle(class1);
-// }
-
 // [1] Ajout de classes Bootstrap
 
 ajouterClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
@@ -28,12 +24,12 @@ ajouterClasses(experience, 'mb-3');
 
 // [2] Animation de la photo
 
-photo.addEventListener('mouseover', function() {
+petitePhoto.addEventListener('mouseover', function() {
     this.style.display = 'none';
     grandePhoto.style.display = 'block';
 });
 grandePhoto.addEventListener('mouseout', function() {
-    photo.style.display = 'block';
+    petitePhoto.style.display = 'block';
     this.style.display = 'none';
 });
 

@@ -1,6 +1,10 @@
 @media print {
-	section {break-inside: avoid-page;}
+	section {
+		break-inside: avoid-page;
+	}
 }
+
+/*  */
 
 mark {
 	background-color: #ffff68;
@@ -11,12 +15,19 @@ em {
 	font-weight: 600;
 }
 
+.deux-col {
+	column-count: 2;
+}
+
+/*  */
+
 h2 {
 	z-index: 0;
 	opacity: .5;
 	transform: scale(.75,.55);
 	animation: intro 3s linear .25s forwards;
 }
+
 @keyframes intro {
 	33% {opacity: .1}
 	66% {opacity: .66}
@@ -44,7 +55,37 @@ h2, .competence h3 {
 	cursor: pointer;
 }
 
-/*  */
+/* En-tête */
+
+header {
+	z-index: 1;
+}
+
+#coordonnees {
+	width: fit-content;
+}
+
+#coordonnees a {
+	color: #000;
+}
+
+#coordonnees a:hover {
+	color: blue;
+}
+
+#petite-photo > img {
+	width: 200px;
+}
+
+#grande-photo {
+	display: none;
+}
+
+#grande-photo > img {
+	width: 400px;
+}
+
+/* Listes */
 
 ul {
 	list-style-type: "\2B9A";
@@ -63,32 +104,7 @@ li {
 	break-inside: avoid-column;
 }
 
-/*  */
-
-.deux-col {
-	column-count: 2;
-}
-
-#gd-photo {display: none;}
-
-#gd-photo img {
-	z-index: 1;
-}
-
-header > div:nth-child(2) {
-	width: fit-content;
-}
-
-header > div:nth-child(2) a {
-	cursor: text;
-	color: #000;
-}
-
-header > div:nth-child(2) a:hover {
-	color: blue;
-}
-
-/* Animation des titres */
+/* Animation des sections */
 
 .fade-in {
     animation: fadeIn 500ms linear forwards;
