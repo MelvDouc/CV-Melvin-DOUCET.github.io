@@ -1,10 +1,32 @@
+// [0] Variables et fonctions
+
 let i;
-const photo = document.getElementById('photo').getElementsByTagName('img')[0];
-const grandePhoto = document.getElementById('gd-photo');
+const photo = document.querySelector('#photo').getElementsByTagName('img')[0];
+const grandePhoto = document.querySelector('#gd-photo');
 const h2s = document.getElementsByTagName('h2');
 const h3sCompetences = document.querySelectorAll('.competence h3');
 const formation = document.querySelectorAll('#formation > ul.deux-col > li');
 const experience = document.querySelectorAll('#experience > ul > li');
+
+function ajouterClasses(elements, ...classesBootstrap) {
+    for(element of elements) {
+        element.classList.add(...classesBootstrap);
+    }   
+}
+
+let toggleClass = (element, class1) => element.classList.toggle(class1);
+
+// function toggleClass(element, class1) {
+//     element.classList.toggle(class1);
+// }
+
+// [1] Ajout de classes Bootstrap
+
+ajouterClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
+ajouterClasses(formation, 'mb-3');
+ajouterClasses(experience, 'mb-3');
+
+// [2] Animation de la photo
 
 photo.addEventListener('mouseover', function() {
     this.style.display = 'none';
@@ -15,21 +37,7 @@ grandePhoto.addEventListener('mouseout', function() {
     this.style.display = 'none';
 });
 
-let ajouterClasses = (element, ...classesBootstrap) => {
-    for(i = 0; i < element.length; i++) {
-        element[i].classList.add(...classesBootstrap);
-    }
-}
-
-ajouterClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
-ajouterClasses(formation, 'mb-3');
-ajouterClasses(experience, 'mb-3');
-
-//
-
-function toggleClass(element, class1){
-    element.classList.toggle(class1);
-}
+// [3] Animation des sections et sous-sections
 
 for(h2 of h2s){
     if(h2.classList.contains('titre-inactif')){
