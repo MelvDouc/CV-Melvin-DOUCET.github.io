@@ -7,19 +7,19 @@ const petitePhoto = document.querySelector('#petite-photo'),
     formation = document.querySelectorAll('#formation > ul.deux-col > li'),
     experience = document.querySelectorAll('#experience > ul > li');
 
-function ajouterClasses(elements, ...classesBootstrap) {
-    for (element of elements) {
-        element.classList.add(...classesBootstrap);
-    }
+function addBootstrapClasses(elements, ...bootstrapClasses) {
+    Object.values(elements).forEach(elem => elem.classList.add(...bootstrapClasses))
 }
 
-const toggleClass = (element, class1) => element.classList.toggle(class1);
+function toggleClass(element, class1) {
+    return element.classList.toggle(class1);
+}
 
 // [1] Ajout de classes Bootstrap
 
-ajouterClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
-ajouterClasses(formation, 'mb-3');
-ajouterClasses(experience, 'mb-3');
+addBootstrapClasses(h2s, 'text-center', 'text-white', 'p-1', 'bg-primary', 'position-relative');
+addBootstrapClasses(formation, 'mb-3');
+addBootstrapClasses(experience, 'mb-3');
 
 // [2] Animation de la photo
 
@@ -34,57 +34,50 @@ grandePhoto.addEventListener('mouseout', function () {
 
 // [3] Animation des sections et sous-sections
 
-for (h2 of h2s) {
+Object.values(h2s).forEach(h2 => {
+    // Obtenir les siblings du titre h2, sur lesquels sera exécutée l'animation
+    let siblings = Object.values(h2.parentElement.children)
+        .filter(sibling => sibling != h2);
+    // Cacher les siblings si le titre a la classe "titre-inactif"
     if (h2.classList.contains('titre-inactif')) {
-        for (child of h2.parentElement.children) {
-            if (!child.matches('h2')) {
-                toggleClass(child, 'section-inactive');
-            }
-        }
-    };
+        siblings.forEach(sibling => toggleClass(sibling, 'section-inactive'))
+    }
+    // Faire apparaitre/disparaitre les siblings au clic
     h2.addEventListener('click', function () {
         toggleClass(this, 'titre-inactif');
-        for (child of this.parentElement.children) {
-            if (!child.matches('h2')) {
-                if (window.getComputedStyle(child).getPropertyValue('display') != 'none') {
-                    child.classList.add('fade-out');
-                    child.classList.remove('fade-in');
-                    setTimeout(toggleClass, 500, child, 'section-inactive');
-                } else {
-                    toggleClass(child, 'section-inactive');
-                    child.classList.remove('fade-out');
-                    child.classList.add('fade-in');
-                }
+        siblings.forEach(sibling => {
+            if (getComputedStyle(sibling).getPropertyValue('display') != 'none') {
+                sibling.classList.add('fade-out');
+                sibling.classList.remove('fade-in');
+                setTimeout(toggleClass, 500, sibling, 'section-inactive');
+            } else {
+                toggleClass(sibling, 'section-inactive');
+                sibling.classList.remove('fade-out');
+                sibling.classList.add('fade-in');
             }
-        }
+        })
     });
     h2.addEventListener('mouseover', function () {
         this.title = (this.classList.contains('titre-inactif')) ? 'Cliquez pour dérouler.' : 'Cliquez pour replier.';
     })
-};
+});
 
-for (h3 of h3sCompetences) {
+
+Object.values(h3sCompetences).forEach(h3 => {
+    let ul = h3.nextElementSibling;
     if (h3.classList.contains('titre-inactif')) {
-        for (child of h3.parentElement.children) {
-            if (!child.matches('h3')) {
-                toggleClass(child, 'section-inactive');
-            }
-        }
-    };
+        toggleClass(ul, 'section-inactive')
+    }
     h3.addEventListener('click', function () {
         toggleClass(this, 'titre-inactif');
-        for (child of this.parentElement.children) {
-            if (!child.matches('h3')) {
-                if (window.getComputedStyle(child).getPropertyValue('display') != 'none') {
-                    child.classList.add('fade-out');
-                    child.classList.remove('fade-in');
-                    setTimeout(toggleClass, 500, child, 'section-inactive');
-                } else {
-                    toggleClass(child, 'section-inactive');
-                    child.classList.remove('fade-out');
-                    child.classList.add('fade-in');
-                }
-            }
+        if (getComputedStyle(ul).getPropertyValue('display') != 'none') {
+            ul.classList.add('fade-out')
+            ul.classList.remove('fade-in')
+            setTimeout(toggleClass, 500, ul, 'section-inactive');
+        } else {
+            toggleClass(ul, 'section-inactive');
+            ul.classList.remove('fade-out');
+            ul.classList.add('fade-in');
         }
-    });
-};
+    })
+});
