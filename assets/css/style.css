@@ -98,13 +98,6 @@ li {
 	break-inside: avoid-column;
 }
 
-/* Grid */
-
-.grid-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-}
-
 /* Animation des sections */
 
 .fade-in {
