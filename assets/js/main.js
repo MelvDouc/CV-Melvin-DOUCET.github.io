@@ -3,7 +3,7 @@
 const petitePhoto = document.querySelector('#petite-photo'),
     grandePhoto = document.querySelector('#grande-photo'),
     h2s = document.getElementsByTagName('h2'),
-    h3sCompetences = document.querySelectorAll('.competence h3'),
+    h3sCompetences = document.querySelectorAll('#competences h3'),
     formation = document.querySelectorAll('#formation > ul.deux-col > li'),
     experience = document.querySelectorAll('#experience > ul > li');
 
